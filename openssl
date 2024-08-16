@@ -1,0 +1,20 @@
+https://openssl-library.org/source/
+Download version
+untar file
+
+cd openssl-<version>
+./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
+sudo make
+sudo make install
+sudo echo "/usr/local/openssl/lib" > /etc/ld.so.conf.d/openssl.conf
+sudo ldconfig
+/usr/local/openssl/bin/openssl version
+
+
+Fix:
+ 1019  cd /usr/local/openssl/
+ 1025  cp -r lib64 lib
+ 1026  ls /usr/local/openssl/lib/
+ 1027  echo "/usr/local/openssl/lib" | sudo tee /etc/ld.so.conf.d/openssl.conf
+ 1028  sudo ldconfig
+ 1029  /usr/local/openssl/bin/openssl version
